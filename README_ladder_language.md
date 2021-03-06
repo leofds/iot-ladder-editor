@@ -72,32 +72,32 @@ In this program, while the NO and NC contact is closed (I01 high and I02 low), t
 <kbd>![image](https://user-images.githubusercontent.com/5174326/110215308-c7a38800-7e87-11eb-94c6-37530fb0982d.png)</kbd>
 **Negated Coil:** The state of the left link is copied to the right link. The inverse of the left link state is copied to the associated variable, that is, if the left link state is *false* then the associated variable state is *true*, otherwise *false*.
 
-<kbd></kbd>
-**:**
+<kbd>![image](https://user-images.githubusercontent.com/5174326/110215602-6da3c200-7e89-11eb-9b4c-d736161aa398.png)</kbd>
+**Set Coil:** The associated variable is set to true when the left link state is true and holds until reset by a **Reset Coil**.
 
-<kbd></kbd>
-**:**
+<kbd>![image](https://user-images.githubusercontent.com/5174326/110215677-ce32ff00-7e89-11eb-9555-e8684914384d.png)</kbd>
+**Reset Coil:** The associated variable is set to *false* state when the left link state is *true* and holds until set by a **Set Coil**.
 
-<kbd></kbd>
-**:**
+<kbd>![image](https://user-images.githubusercontent.com/5174326/110215708-00dcf780-7e8a-11eb-9875-a2e8bf793077.png) </kbd>
+**Retentive Coil:** Similar to the Coil instruction, but the associated variable should preferably be a retentive memory (global variable).
 
-<kbd></kbd>
-**:**
+<kbd>![image](https://user-images.githubusercontent.com/5174326/110215722-10f4d700-7e8a-11eb-8768-d56e6479666d.png)</kbd>
+**Set Retentive Coil:** Similar to the Set Coil instruction, but the associated variable should preferably be a retentive memory (global variable).
 
-<kbd></kbd>
-**:**
+<kbd>![image](https://user-images.githubusercontent.com/5174326/110215738-236f1080-7e8a-11eb-92d0-a040ff83e97c.png)</kbd>
+**Reset Retentive Coil:** Similar to the Reset Coil instruction, but the associated variable should preferably be a retentive memory (global variable).
 
-<kbd></kbd>
-**:**
+<kbd>![image](https://user-images.githubusercontent.com/5174326/110215786-5913f980-7e8a-11eb-8477-021413970352.png)</kbd>
+**Positive Transition-sensing Coil:** The state of the associated variable is *true* when a transition of the left link from *false* to *true* is detected. The left link state is always copied to the right link.
 
-<kbd></kbd>
-**:**
+<kbd>![image](https://user-images.githubusercontent.com/5174326/110215795-692bd900-7e8a-11eb-987b-0eef83154eeb.png)</kbd>
+**Negative Transition-sensing Coil:** The state of the associated variable is *true* when a transition of the left link from *true* to *false* is detected. The left link state is always copied to the right link.
 
-<kbd></kbd>
-**:**
+<kbd>![image](https://user-images.githubusercontent.com/5174326/110215804-7779f500-7e8a-11eb-995b-5e9f967dad3c.png)</kbd>
+**End:** End of the Ladder program.
 
-<kbd></kbd>
-**:**
+<kbd>![image](https://user-images.githubusercontent.com/5174326/110215813-852f7a80-7e8a-11eb-9575-3f220b5dafa2.png)</kbd>
+**Reset:** The associated variable/Timer/Counter is cleared/reset when the left link state is *true*. The left link state is always copied to the right link.
 
 <kbd></kbd>
 **:**
