@@ -99,13 +99,6 @@ In this program, while the NO and NC contact is closed (I01 high and I02 low), t
 <kbd>![image](https://user-images.githubusercontent.com/5174326/110215813-852f7a80-7e8a-11eb-9575-3f220b5dafa2.png)</kbd>
 **Reset:** The associated variable/Timer/Counter is cleared/reset when the left link state is *true*. The left link state is always copied to the right link.
 
-<p float="left">
-  <img src="https://user-images.githubusercontent.com/5174326/110215909-f707c400-7e8a-11eb-9997-55ab8cf3c370.png" />
-  teste
-</p>
-<kbd>![image](https://user-images.githubusercontent.com/5174326/110215909-f707c400-7e8a-11eb-9997-55ab8cf3c370.png)</kbd>
-**Timer On:** The timer counter is incremented by time as set in Time Base (miliseconds) until the Preset value is reached. When Preset value is reached the right link state is true. The left link state must be true for the timer counter to be incremented otherwise the timer is reset and the right link state will be false.
-
 <kbd></kbd>
 **:**
 
