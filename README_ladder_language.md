@@ -35,3 +35,80 @@ Example:
 > **END**: end of Ladder Program<br/>
 
 In this program, while the NO and NC contact is closed (I01 high and I02 low), the relay remains activated (Q01 high).
+
+### Structural symbols of Ladder language
+
+
+<kbd>![image](https://user-images.githubusercontent.com/5174326/110214456-52ce4f00-7e83-11eb-8c89-1258d472414f.png)</kbd>
+**Left Power Rail:** Begin of *rung*. Set the state of the first trailing link to *true*.
+
+<kbd>![image](https://user-images.githubusercontent.com/5174326/110214516-b2c4f580-7e83-11eb-9a23-cd813caef898.png)</kbd>
+**Right Power Rail:** End of *rung*.
+
+<kbd>![image](https://user-images.githubusercontent.com/5174326/110214604-249d3f00-7e84-11eb-84f3-88c27f214a17.png)</kbd>
+**Horizontal Link:** Available for Ladder instructions.
+
+<kbd>![image](https://user-images.githubusercontent.com/5174326/110214625-354db500-7e84-11eb-82be-b7e8061f6483.png)</kbd>
+**Vertical Link:** Connects *rungs* or Ladder instructions in parallel.
+<kbd></kbd>
+
+#### Ladder Instruction Symbols
+
+<kbd>![image](https://user-images.githubusercontent.com/5174326/110214721-b1e09380-7e84-11eb-906d-9e1fd6409dae.png)</kbd>
+**Normally Open Contact:** The left link state is copied to the right link if the state of the associated variable is *true*. Otherwise the right link state is *false*.
+
+<kbd>![image](https://user-images.githubusercontent.com/5174326/110215144-04bb4a80-7e87-11eb-9f08-1cd3e96756aa.png)</kbd>
+**Normally Closed Contact:** The left link state is copied to the right link if the state of the associated variable is *false*. Otherwise the right link state is *false*.
+
+<kbd>![image](https://user-images.githubusercontent.com/5174326/110215183-303e3500-7e87-11eb-9f56-d3d5cf419a1f.png)</kbd>
+**Positive Transition-sensing Contact:** The right link state is *true* when a transition of the associated variable from *false* to *true* is detected and the left link state is *true*. The right link state is *false* at all other times.
+
+<kbd>![image](https://user-images.githubusercontent.com/5174326/110215273-92973580-7e87-11eb-8cc9-3605b6c7ad86.png)</kbd>
+**Negative Transition-sensing Contact:** The right link state is *true* when a transition of the associated variable from *true* to *false* is detected and the left link state is *true*. The right link state is *false* at all other times.
+
+<kbd>![image](https://user-images.githubusercontent.com/5174326/110215287-ac387d00-7e87-11eb-9ba9-3e6d66e1f714.png)</kbd>
+**Coil:** The left link state is copied to the associated variable and to the right link.
+
+<kbd>![image](https://user-images.githubusercontent.com/5174326/110215308-c7a38800-7e87-11eb-94c6-37530fb0982d.png)</kbd>
+**Negated Coil:** The state of the left link is copied to the right link. The inverse of the left link state is copied to the associated variable, that is, if the left link state is *false* then the associated variable state is *true*, otherwise *false*.
+
+<kbd></kbd>
+**:**
+
+<kbd></kbd>
+**:**
+
+<kbd></kbd>
+**:**
+
+<kbd></kbd>
+**:**
+
+<kbd></kbd>
+**:**
+
+<kbd></kbd>
+**:**
+
+<kbd></kbd>
+**:**
+
+<kbd></kbd>
+**:**
+
+<kbd></kbd>
+**:**
+
+<kbd></kbd>
+**:**
+
+<kbd></kbd>
+**:**
+
+<kbd></kbd>
+**:**
+
+
+
+
+
