@@ -34,3 +34,9 @@ Click on picture below to see the demo video:
 
 [![](http://img.youtube.com/vi/Q0b-nEzqo88/0.jpg)](http://www.youtube.com/watch?v=Q0b-nEzqo88 "https://www.youtube.com/watch?v=Q0b-nEzqo88")
 
+#### Connecting to the MQTT broker
+
+Go to **Project>Properties**
+
+<img src="https://user-images.githubusercontent.com/5174326/110250317-74016f00-7f59-11eb-83e4-6a014f20aa4f.png" width="600">
+
