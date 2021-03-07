@@ -65,17 +65,24 @@ In this program, while the NO and NC contact is closed (I01 high and I02 low), t
 | <p align="center"><kbd>![image](https://user-images.githubusercontent.com/5174326/110215813-852f7a80-7e8a-11eb-9575-3f220b5dafa2.png)</kbd></p> | **Reset**<br/>The associated variable/Timer/Counter is cleared/reset when the left link state is *true*. The left link state is always copied to the right link. |
 | <p align="center"><kbd>![image](https://user-images.githubusercontent.com/5174326/110226227-28ed4a80-7ecc-11eb-8bf2-f976f31ef656.png)</kbd></p> | **Timer On**<br/>The timer counter is incremented by time as set in Time Base (miliseconds) until the Preset value is reached. When Preset value is reached the right link state is true. The left link state must be true for the timer counter to be incremented otherwise the timer is reset and the right link state will be false.<br/><br/>Variables of instruction:<br/>AC – ( accumulator ) counter incremented by time;<br/>PRE – ( preset ) maximum value of accumulator;<br/>DN – ( done ) true if preset value has been reached;<br/>EN – ( enable ) state of left link.<br/><br/>**Reset** instruction reset the Timer. Preset variable does not change with reset. |
 | <p align="center"><kbd>![image](https://user-images.githubusercontent.com/5174326/110226597-8d5dd900-7ecf-11eb-9216-1f42dcac4b61.png)</kbd></p> | **Timer Off**<br/>The timer counter is incremented by time as set in Time Base (miliseconds) until the Preset value is reached. While the left link state is true and the preset value is not reached the right link state is true. When Preset value is reached the right link state is false. The left link state must be true for the timer counter to be incremented otherwise the timer is reset and the right link state will be false.<br/><br/>Variables of instruction:<br/>AC – ( accumulator ) counter incremented by time;<br/>PRE – ( preset ) maximum value of accumulator;<br/>DN – ( done ) true if preset value has been reached;<br/>EN – ( enable ) state of left link.<br/><br/>**Reset** instruction reset the Timer. Preset variable does not change with reset. |
-| <p align="center"><kbd></kbd></p> | ****<br/> |
-| <p align="center"><kbd></kbd></p> | ****<br/> |
-| <p align="center"><kbd></kbd></p> | ****<br/> |
-| <p align="center"><kbd></kbd></p> | ****<br/> |
-| <p align="center"><kbd></kbd></p> | ****<br/> |
-| <p align="center"><kbd></kbd></p> | ****<br/> |
-| <p align="center"><kbd></kbd></p> | ****<br/> |
-| <p align="center"><kbd></kbd></p> | ****<br/> |
-| <p align="center"><kbd></kbd></p> | ****<br/> |
-| <p align="center"><kbd></kbd></p> | ****<br/> |
-| <p align="center"><kbd></kbd></p> | ****<br/> |
+| <p align="center"><kbd>![image](https://user-images.githubusercontent.com/5174326/110226635-bb431d80-7ecf-11eb-9146-10e8a43a352b.png)</kbd></p> | **Count Up**<br/>The counter increments with each left link state transition from false to true until the Preset value is reached. The right link state is true when the Preset value is reached and the left link state is true.<br/><br/>Variables of instruction:<br/>AC – ( accumulator ) counter incremented;<br/>PRE – ( preset ) maximum value of accumulator;<br/>DN – ( done ) true if preset value has been reached;<br/>CC – ( counting ) true if the counter has been incremented.<br/><br/>**Reset** instruction reset the Counter. Preset variable does not change with reset.  |
+| <p align="center"><kbd></kbd></p> | **Count Down**<br/> |
+| <p align="center"><kbd></kbd></p> | **Equal**<br/> |
+| <p align="center"><kbd></kbd></p> | **Greater Equal**<br/> |
+| <p align="center"><kbd></kbd></p> | **Greater Than**<br/> |
+| <p align="center"><kbd></kbd></p> | **Less Equal**<br/> |
+| <p align="center"><kbd></kbd></p> | **Less**<br/> |
+| <p align="center"><kbd></kbd></p> | **Not Equal**<br/> |
+| <p align="center"><kbd></kbd></p> | **And**<br/> |
+| <p align="center"><kbd></kbd></p> | **Not**<br/> |
+| <p align="center"><kbd></kbd></p> | **Or**<br/> |
+| <p align="center"><kbd></kbd></p> | **Xor**<br/> |
+| <p align="center"><kbd></kbd></p> | **Assignment**<br/> |
+| <p align="center"><kbd>![image](https://user-images.githubusercontent.com/5174326/110226699-415f6400-7ed0-11eb-90f6-ef1fcfd51831.png)</kbd></p> | **Add**<br/> |
+| <p align="center"><kbd>![image](https://user-images.githubusercontent.com/5174326/110226696-3d334680-7ed0-11eb-9afe-7cd2c00db1d3.png)</kbd></p> | **Div**<br/> |
+| <p align="center"><kbd>![image](https://user-images.githubusercontent.com/5174326/110226693-399fbf80-7ed0-11eb-9f49-b0d5a6512211.png)</kbd></p> | **Mul**<br/> |
+| <p align="center"><kbd>![image](https://user-images.githubusercontent.com/5174326/110226690-3573a200-7ed0-11eb-8381-bbb18db03cd5.png)</kbd></p> | **Sub**<br/> |
+| <p align="center"><kbd>![image](https://user-images.githubusercontent.com/5174326/110226684-2f7dc100-7ed0-11eb-9bbd-88f3f10ed27d.png)</kbd></p> | **System Scan Time**<br/> |
 
 
 
