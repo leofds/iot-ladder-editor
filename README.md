@@ -22,3 +22,12 @@ It's a desktop Java application developed with Eclipse IDE + WindowBuilder plug-
 
 ## How to use the software
 To understand about the Ladder Language read [README_ladder_language.md](https://github.com/leofds/iot-ladder-editor/blob/main/README_ladder_language.md).
+
+Use drag and drop to place instructions on the *Rung*.
+
+<img src="https://user-images.githubusercontent.com/5174326/110227572-72439700-7ed8-11eb-95e0-f12b2f316e36.gif" width="600" />
+
+Use drag and drop to associate input/output variables to instructions.
+
+<img src="https://user-images.githubusercontent.com/5174326/110227678-b84d2a80-7ed9-11eb-9d99-969986bb7149.gif" width="600" />
+
