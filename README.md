@@ -1,6 +1,5 @@
 # IoT Ladder Editor
 
-
 <p align="center"><kbd>
   <img src="https://user-images.githubusercontent.com/5174326/110049165-10e0c400-7d30-11eb-9122-5d47fe090d74.png" width="800">
 </kbd></p>
@@ -23,7 +22,7 @@ It's a desktop Java application developed with Eclipse IDE + WindowBuilder plug-
 ## How to use the software
 To understand about the Ladder Language read [README_ladder_language.md](https://github.com/leofds/iot-ladder-editor/blob/main/README_ladder_language.md).
 
-Use drag and drop to place instructions on the *Rung* and associate input/output variables to instructions.
+Use drag and drop to place instructions on the *Rung* and associate input/output variables to instructions. Go to **Project>Build** to generate the output code.
 
-![output (1)](https://user-images.githubusercontent.com/5174326/110243440-1d843880-7f39-11eb-8fd7-9fa48134a221.gif)
+[![Demo](http://img.youtube.com/vi/Q0b-nEzqo88/0.jpg)](http://www.youtube.com/watch?v=Q0b-nEzqo88)
 
