@@ -34,9 +34,36 @@ Click on picture below to see the demo video:
 
 [![](http://img.youtube.com/vi/Q0b-nEzqo88/0.jpg)](http://www.youtube.com/watch?v=Q0b-nEzqo88 "https://www.youtube.com/watch?v=Q0b-nEzqo88")
 
-#### Connecting to the MQTT broker
+### Connecting to the MQTT broker
 
-Go to **Project>Properties**
+Before building, go to **Project>Properties**<br/>
+Set the Wi-fi connection and on the tab MQTT set your Broker connection.
 
-<img src="https://user-images.githubusercontent.com/5174326/110250317-74016f00-7f59-11eb-83e4-6a014f20aa4f.png" width="600">
+<p>
+<img src="https://user-images.githubusercontent.com/5174326/110250317-74016f00-7f59-11eb-83e4-6a014f20aa4f.png" width="600"/>
+<p/>
 
+#### Sending messages to device
+
+Only Integer and Floating program variable can be modified by MQTT messages.<br/>
+Set the topic to subscribe on the tab MQTT/Topic.
+
+Example of message: sending value 1 to variable MI01:
+```
+{
+  "MI01": 1
+}
+```
+... associate the Integer variable to instruction
+<p>
+<img src="https://user-images.githubusercontent.com/5174326/110261559-75e62500-7f8f-11eb-85de-57cae13cc227.png" width="400"/>
+<p/>
+
+#### Sending messages from device
+
+Set the topic to publish on the tab MQTT/Topic.<br/>
+On the tab MQTT/Telemetry set the period and variables to send.
+
+<p>
+<img src="https://user-images.githubusercontent.com/5174326/110261862-9367be80-7f90-11eb-8f19-11463b8da99d.png" width="600"/>
+<p/>
