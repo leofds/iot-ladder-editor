@@ -9,7 +9,7 @@ The Ladder program is executed by the CPU from left to right, top to bottom, one
 
 Variables may be associated with Ladder instructions, they may have specific functions or be general purpose:
 - Variables that start with "I" are mapped to an input interface
-- Variables that start with "I" are mapped to an input interface
+- Variables that start with "Q" are mapped to an output interface
 - Variables that start with "MI" are general purpose integer variables
 - Variables that start with "MF" are general purpose float variables
 - Timer instructions have control variables: AC, PRE, DN, EN
