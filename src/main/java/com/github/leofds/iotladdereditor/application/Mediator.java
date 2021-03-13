@@ -133,7 +133,7 @@ public class Mediator {
 		ladderEditorPanel.scrollScale();
 		memoryPanel.getMemoryTree().setModel(new CustomTreeModel( TreeFactory.createMemoryTree(project.getLadderProgram()) ));
 		//deviceTreePane.update();
-		ui.setTitle(Strings.appName()+" - "+getProject().getName());
+		ui.setTitle(Strings.appName()+" - "+getProject().getAbsoletePath());
 		ui.repaint();
 		setChangedInTitle();
 	}

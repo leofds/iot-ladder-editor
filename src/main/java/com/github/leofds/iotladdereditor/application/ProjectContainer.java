@@ -29,6 +29,7 @@ public class ProjectContainer {
 	private boolean saved;
 	private boolean changed;
 	private boolean compiled;
+	private String absoletePath;
 
 	public ProjectContainer() {
 		ladderProgram = new LadderProgram();
@@ -93,6 +94,11 @@ public class ProjectContainer {
 		this.sourceCode = sourceCode;
 	}
 
-	
-	
+	public String getAbsoletePath() {
+		return absoletePath;
+	}
+
+	public void setAbsoletePath(String absoletePath) {
+		this.absoletePath = absoletePath;
+	}
 }

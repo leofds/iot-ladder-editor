@@ -28,7 +28,6 @@ import java.util.Stack;
 import java.util.stream.Stream;
 
 import org.apache.maven.model.Model;
-import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 
 import com.github.leofds.iotladdereditor.application.ProjectContainer;
 import com.github.leofds.iotladdereditor.compiler.SourceCode;
@@ -82,29 +81,34 @@ public class Esp32ArduinoCodeGenerator implements CodeGenerator{
 
 		c.createNewFile("plc/plc.ino");
 		addFileDescription(c);
-		addIncludes(c);
+		if(isConnectionConfigured()) {
+			addIoTIncludes(c);
+		}
 		addDefaultDefines(c);
 		addPinDefines(c);
-		addWifiConst(c);
-		addMqttConst(c);
-		addQueueAndPubStruct(c);
-		addWifiStateConn(c);
-		addFunctionsPropotypes(c);
-		addWifiAndPubSubClient(c);
+		if(isConnectionConfigured()) {
+			addWifiConst(c);
+			addMqttConst(c);
+			addQueueAndPubStruct(c);
+			addWifiStateConn(c);
+			addMsgFunctionsPropotypes(c);
+			addWifiClient(c);
+			addPubSubClient(c);
+		}
 		addTimerStruct(ir, c);
 		addCountStruct(ir, c);
 		addGlobalSystemVariables(ir, c);
 		addTimerSystemFunction(c);
 		addGlobalVariables(ir, c);
 		addGlobalStructs(ir, c);
-
-		addTaskCom(c);
-		addSendMsg(c);
-		addMsgReceiv(ir, c);
-		addTelemetryFunction(ir, c);
-
+		if(isConnectionConfigured()) {
+			addTaskCom(c);
+			addSendMsg(c);
+			addMsgReceiv(ir, c);
+			addTelemetryFunction(ir, c);
+		}
 		addUpdateSystem(c);
-		
+
 		addInputSystemFunction(p, c);
 		addOutputSystemFunction(p, c);
 		addScanTimeSystemFunction(ir, c);
@@ -126,6 +130,15 @@ public class Esp32ArduinoCodeGenerator implements CodeGenerator{
 			this.value = value;
 		}
 	};
+	
+	private boolean isConnectionConfigured() {
+		if(	properties.getWifiSsid() != null && !properties.getWifiSsid().isEmpty() &&
+			properties.getBrokerAddress()!= null && !properties.getBrokerAddress().isEmpty() &&
+			properties.getBrokerPort() > 0 && properties.getBrokerPort() < 65536) {
+			return true;
+		}
+		return false;
+	}
 	
 	private String cname(String name) {
 		name = name.replace(":", ".");
@@ -180,7 +193,7 @@ public class Esp32ArduinoCodeGenerator implements CodeGenerator{
 				"// Project: "+project.getName());
 	}
 	
-	private void addIncludes(SourceCode c) {
+	private void addIoTIncludes(SourceCode c) {
 		c.newLine();
 		c.addl("#include <WiFiClientSecure.h>");
 		c.addl("#include <PubSubClient.h>");
@@ -212,10 +225,10 @@ public class Esp32ArduinoCodeGenerator implements CodeGenerator{
 		c.newLine();
 		String ssid = properties.getWifiSsid() != null ? properties.getWifiSsid() : "";
 		String pass = properties.getWifiPassword() != null ? properties.getWifiPassword() : "";
-		String clientId = properties.getMqttClientID() != null ? properties.getMqttClientID() : "";
+		
 		c.addl("const char* ssid = \""+ssid+"\";");
 		c.addl("const char* password = \""+pass+"\";");
-		c.addl("const char* device_id = \""+clientId+"\";");
+		
 	}
 	
 	private String readFileJava8(String filePath) {
@@ -233,8 +246,11 @@ public class Esp32ArduinoCodeGenerator implements CodeGenerator{
 		c.newLine();
 		
 		String brokerAddr = properties.getBrokerAddress() != null ? properties.getBrokerAddress() : "";
+		String clientId = properties.getMqttClientID() != null ? properties.getMqttClientID() : "";
+		
 		c.addl("const char* broker_address = \""+brokerAddr+"\";");
 		c.addl("const uint16_t broker_port = "+properties.getBrokerPort()+";");
+		c.addl("const char* device_id = \""+clientId+"\";");
 		c.addl("");
 		c.addl("const char* pub_topic = \""+properties.getMqttPubTopic()+"\";");
 		c.addl("const char* sub_topic = \""+properties.getMqttSubTopic()+"\";");
@@ -318,9 +334,11 @@ public class Esp32ArduinoCodeGenerator implements CodeGenerator{
 		c.addl("  uint64_t v;");
 		c.addl("} "+varTime+";");
 		
-		if(properties.getEnableTelemetry()) {
-			c.newLine();
-			c.addl("uint64_t telemetryTime;");
+		if(isConnectionConfigured()) {
+			if(properties.getEnableTelemetry()) {
+				c.newLine();
+				c.addl("uint64_t telemetryTime;");
+			}
 		}
 	}
 	
@@ -449,8 +467,10 @@ public class Esp32ArduinoCodeGenerator implements CodeGenerator{
 			PeripheralIO peripheral = (PeripheralIO) entry.getValue();
 			c.addl("  pinMode("+peripheral.getPath()+", OUTPUT);");
 		}
-		if(properties.getEnableTelemetry()) {
-			c.addl("  telemetryTime = getTime();");
+		if(isConnectionConfigured()) {
+			if(properties.getEnableTelemetry()) {
+				c.addl("  telemetryTime = getTime();");
+			}
 		}
 		c.addl("}");
 	}
@@ -759,19 +779,23 @@ public class Esp32ArduinoCodeGenerator implements CodeGenerator{
 				"CONN_ST conn_st = CONN_ST_START;");
 	}
 	
-	private void addFunctionsPropotypes(SourceCode c) {
+	private void addMsgFunctionsPropotypes(SourceCode c) {
 		c.newLine();
 		c.addl("void msgReceived(char* topic, byte* payload, unsigned int len);");
 		c.addl("void sendMsg(char *msg);");
 	}
 	
-	private void addWifiAndPubSubClient(SourceCode c) {
+	private void addWifiClient(SourceCode c) {
 		c.newLine();
 		if(properties.isEnableSsl()) {
 			c.addl("WiFiClientSecure wiFiClient;");
 		}else{
 			c.addl("WiFiClient wiFiClient;");
 		}
+	}
+	
+	private void addPubSubClient(SourceCode c) {
+		c.newLine();
 		c.addl("PubSubClient pubSubClient(broker_address, broker_port, msgReceived, wiFiClient);");
 	}
 	
@@ -872,8 +896,10 @@ public class Esp32ArduinoCodeGenerator implements CodeGenerator{
 				c.addl("    "+symbol.getName()+"();");
 			}
 		}
-		if(properties.getEnableTelemetry()) {
-			c.addl("    telemetry();");
+		if(isConnectionConfigured()) {
+			if(properties.getEnableTelemetry()) {
+				c.addl("    telemetry();");
+			}
 		}
 		c.addl("    "+ProgramFunc.OUTPUT.value+"();");
 		c.addl("  }");
@@ -940,14 +966,17 @@ public class Esp32ArduinoCodeGenerator implements CodeGenerator{
 				c.addl("  wiFiClient.setPrivateKey(client_private_key);");
 			}
 		}
-		c.addl( "  pubqueue = xQueueCreate(1, sizeof(PubMsg));");
-		c.addl(	"  xTaskCreatePinnedToCore(TaskCom,\"TaskCom\",8192,NULL,2,NULL,ARDUINO_RUNNING_CORE);\r\n" +
-				"  xTaskCreatePinnedToCore(TaskScan,\"TaskScan\",4096,NULL,2,NULL,ARDUINO_RUNNING_CORE);\r\n" +
-				"}");
+		if(isConnectionConfigured()) {
+			c.addl("  pubqueue = xQueueCreate(1, sizeof(PubMsg));");
+			c.addl("  xTaskCreatePinnedToCore(TaskCom,\"TaskCom\",8192,NULL,2,NULL,ARDUINO_RUNNING_CORE);");
+		}
+		c.addl("  xTaskCreatePinnedToCore(TaskScan,\"TaskScan\",4096,NULL,2,NULL,ARDUINO_RUNNING_CORE);");
+		c.addl("}");
 
 	}
 	
 	private void addLoop(SourceCode c) {
+		c.newLine();
 		c.addl("void loop() {");
 		c.addl("}");
 		c.addl("");

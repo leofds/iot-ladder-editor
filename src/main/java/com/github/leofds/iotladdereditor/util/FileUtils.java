@@ -61,8 +61,8 @@ public class FileUtils {
 	private static void writeProgramFile(String fileName){
 		Mediator me = Mediator.getInstance();
 		ProjectContainer project = me.getProject();
+		project.setAbsoletePath(fileName);
 		ObjectOutputStream out = null;
-		System.out.println("->>" +fileName);
 		try{
 			Mediator.getInstance().unselectInstruction();
 			out = new ObjectOutputStream(new FileOutputStream(new File(fileName)));
@@ -94,6 +94,7 @@ public class FileUtils {
 	private static void readProgramFile(String fileName){
 		Mediator me = Mediator.getInstance();
 		ProjectContainer project = me.getProject();
+		project.setAbsoletePath(fileName);
 		ObjectInputStream in = null;
 		try{
 			in = new ObjectInputStream(new FileInputStream(fileName));
@@ -139,6 +140,7 @@ public class FileUtils {
 		project.setChanged(false);
 		project.setSaved(false);
 		project.setName(getPName(ex.name));
+		project.setAbsoletePath(project.getName());
 		me.setProject(project);
 		me.updateProjectAndViews();
 		me.clearConsole();
