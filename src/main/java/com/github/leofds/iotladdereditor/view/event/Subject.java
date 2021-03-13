@@ -22,6 +22,7 @@ public class Subject extends Observable{
 
 	public enum SubMsg{
 		BUILD,
+		BUILD_RUN,
 	};
 	
 	private static Subject subject;

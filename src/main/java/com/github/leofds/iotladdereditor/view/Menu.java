@@ -58,6 +58,7 @@ public class Menu extends JMenuBar {
 		JMenuItem fileExit = new JMenuItem(Strings.exit());
 		JMenu menuProject = new JMenu(Strings.project());
 		JMenuItem projectBuild = new JMenuItem(Strings.build());
+		JMenuItem projectBuildRun = new JMenuItem(Strings.buildRun());
 		JMenuItem projectProprerties = new JMenuItem(Strings.properties());
 		JMenu menuHelp = new JMenu(Strings.help());
 		helpLang = new JMenu(Strings.language());
@@ -87,6 +88,7 @@ public class Menu extends JMenuBar {
 		fileSaveAs.addActionListener(getFileSaveAsAction());
 		fileExit.addActionListener(getFileExitAction());
 		projectBuild.addActionListener(getProjectBuild());
+		projectBuildRun.addActionListener(getProjectBuildRun());
 		projectProprerties.addActionListener(getProjectProperties());
 		helpAbout.addActionListener(getHelpAbout());
 
@@ -114,6 +116,10 @@ public class Menu extends JMenuBar {
 		projectBuild.getActionMap().put("evtBuild", (AbstractAction) getProjectBuild());
 		projectBuild.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, InputEvent.CTRL_DOWN_MASK));
 
+		projectBuildRun.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.CTRL_DOWN_MASK), "evtBuildRun");
+		projectBuildRun.getActionMap().put("evtBuildRun", (AbstractAction) getProjectBuildRun());
+		projectBuildRun.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.CTRL_DOWN_MASK));
+		
 		helpAbout.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0, true),"evtAbout");
 		helpAbout.getActionMap().put("evtAbout", (AbstractAction) getHelpAbout());
 		helpAbout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0, true));
@@ -128,6 +134,7 @@ public class Menu extends JMenuBar {
 		menuFile.addSeparator();
 		menuFile.add(fileExit);
 		menuProject.add(projectBuild);
+		menuProject.add(projectBuildRun);
 		menuProject.addSeparator();
 		menuProject.add(projectProprerties);
 		menuHelp.add(helpLang);
@@ -212,6 +219,17 @@ public class Menu extends JMenuBar {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Subject.getInstance().notifyChange(SubMsg.BUILD);
+			}
+		};
+	}
+	
+	private AbstractAction getProjectBuildRun() {
+		return new AbstractAction() {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Subject.getInstance().notifyChange(SubMsg.BUILD_RUN);
 			}
 		};
 	}

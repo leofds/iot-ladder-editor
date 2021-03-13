@@ -27,7 +27,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.github.leofds.iotladdereditor.application.Mediator;
 import com.github.leofds.iotladdereditor.ladder.config.Constants;
-import com.github.leofds.iotladdereditor.view.event.BuildEvent;
+import com.github.leofds.iotladdereditor.view.event.BuildRunEvent;
 import com.github.leofds.iotladdereditor.view.event.Subject;
 
 public class ContentPanel extends JPanel{
@@ -39,7 +39,7 @@ public class ContentPanel extends JPanel{
 		setBorder(new EmptyBorder(0,0,0,0));
 
 		Subject subject = Subject.getInstance();
-		new BuildEvent(subject);
+		new BuildRunEvent(subject);
 
 		LadderEditorPanel ladderEditorPanel = new LadderEditorPanel(new Dimension((int) (Constants.blockWidth*(Constants.colsNumber+2)),100));
 		ConsolePanel consolePanel = new ConsolePanel();

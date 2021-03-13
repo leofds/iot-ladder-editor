@@ -16,6 +16,9 @@
  ******************************************************************************/
 package com.github.leofds.iotladdereditor.view.event;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -23,11 +26,11 @@ import com.github.leofds.iotladdereditor.application.Mediator;
 import com.github.leofds.iotladdereditor.compiler.Compiler;
 import com.github.leofds.iotladdereditor.view.event.Subject.SubMsg;
 
-public class BuildEvent implements Observer {
+public class BuildRunEvent implements Observer {
 
 	private Subject subject;
 
-	public BuildEvent(Subject subject) {
+	public BuildRunEvent(Subject subject) {
 		subject.addObserver(this);
 		this.subject = subject;
 	}
@@ -37,12 +40,32 @@ public class BuildEvent implements Observer {
 		me.clearConsole();
 		Compiler.build(me.getProject());
 	}
+	
+	private void buildRun() {
+		Mediator me = Mediator.getInstance();
+		build();
+		try {
+			switch(me.getProject().getLadderProgram().getProperties().getCodeOption()) {
+			case ESP32_ARDUINO_FREERTOS:
+				Desktop.getDesktop().open(new File("out/plc/plc.ino"));
+				break;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			me.outputConsoleMessage(e.getMessage());
+		}
+	}
 
 	@Override
 	public void update(Observable o, Object arg) {
 		if(subject instanceof Subject && arg instanceof SubMsg){
-			if(((SubMsg) arg) == SubMsg.BUILD) {
+			switch((SubMsg) arg) {
+			case BUILD:
 				build();
+				break;
+			case BUILD_RUN:
+				buildRun();
+				break;
 			}
 		}
 	}

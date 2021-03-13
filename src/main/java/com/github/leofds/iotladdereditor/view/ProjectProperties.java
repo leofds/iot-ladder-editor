@@ -540,7 +540,11 @@ public class ProjectProperties extends JDialog {
 			properties.setWifiSsid( textFieldSsid.getText() );
 			properties.setWifiPassword( textFieldPassword.getText() );
 			properties.setBrokerAddress( textFieldBrokerAddress.getText() );
-			properties.setBrokerPort( Integer.parseInt( textFieldBokerPort.getText() ) );
+			try {
+				properties.setBrokerPort( Integer.parseInt( textFieldBokerPort.getText() ) );
+			} catch (Exception e) {
+				properties.setBrokerPort( 1883 );
+			}
 			properties.setMqttClientID( textFieldClientID.getText() );
 			properties.setMqttUsername( textFieldUserUsername.getText() );
 			properties.setMqttPassword( textFieldUserPassword.getText() );
