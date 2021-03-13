@@ -170,9 +170,5 @@ public class Strings {
 	public static String invalidFileExtension() { return bundle.getString("invalidFileExtension"); }
 	public static String theExtensionMustBe() { return bundle.getString("theExtensionMustBe"); }
 	public static String doYouWantToOverwriteTheFile() { return bundle.getString("doYouWantToOverwriteTheFile"); }
-	
-	
-	
-	
-	
+	public static String generate() { return bundle.getString("generate"); }
 }

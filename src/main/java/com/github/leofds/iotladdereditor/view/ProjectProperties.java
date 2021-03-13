@@ -52,6 +52,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.AbstractTableModel;
 
+import org.apache.commons.lang3.RandomStringUtils;
+
 import com.github.leofds.iotladdereditor.application.Mediator;
 import com.github.leofds.iotladdereditor.compiler.domain.CodeOptions;
 import com.github.leofds.iotladdereditor.device.Device;
@@ -61,8 +63,7 @@ import com.github.leofds.iotladdereditor.device.PeripheralIO;
 import com.github.leofds.iotladdereditor.i18n.Strings;
 import com.github.leofds.iotladdereditor.ladder.LadderProgram;
 import com.github.leofds.iotladdereditor.ladder.ProgramProperties;
-import com.github.leofds.iotladdereditor.view.event.Subject;
-import com.github.leofds.iotladdereditor.view.event.Subject.SubMsg;
+import com.github.leofds.iotladdereditor.util.FileUtils;
 
 public class ProjectProperties extends JDialog {
 
@@ -183,7 +184,7 @@ public class ProjectProperties extends JDialog {
 		});
 		
 		textFieldClientID = new JTextField();
-		textFieldClientID.setBounds(151, 74, 580, 22);
+		textFieldClientID.setBounds(151, 74, 478, 22);
 		panel_2.add(textFieldClientID);
 		textFieldClientID.setColumns(10);
 		
@@ -406,6 +407,15 @@ public class ProjectProperties extends JDialog {
 										checkBoxTelemetryMemory.setBackground(Color.WHITE);
 										checkBoxTelemetryMemory.setBounds(345, 93, 155, 21);
 										panel_7.add(checkBoxTelemetryMemory);
+										
+										JButton btnGenerateClientID = new JButton( Strings.generate() );
+										btnGenerateClientID.addActionListener(new ActionListener() {
+											public void actionPerformed(ActionEvent e) {
+												textFieldClientID.setText(RandomStringUtils.randomAlphabetic(20));
+											}
+										});
+										btnGenerateClientID.setBounds(639, 74, 92, 21);
+										panel_2.add(btnGenerateClientID);
 
 		JPanel panel_3 = new JPanel();
 		tabbedPane.addTab(Strings.pinMapping(), null, panel_3, null);
@@ -553,7 +563,7 @@ public class ProjectProperties extends JDialog {
 
 			Mediator me = Mediator.getInstance();
 			me.getProject().setChanged(true);
-			me.getFileOp().saveLadderProgram();
+			FileUtils.saveLadderProgram();
 			me.clearConsole();
 			me.updateDevice(device);
 			this.dispose();

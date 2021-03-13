@@ -27,7 +27,7 @@ public class DeviceFactory {
 		PeripheralIO pc2out = new PeripheralIO("Q2", Boolean.class, "4", "PIN_Q02", IO.OUTPUT);
 		PeripheralIO pc3out = new PeripheralIO("Q3", Boolean.class, "12", "PIN_Q03", IO.OUTPUT);
 		PeripheralIO pc4out = new PeripheralIO("Q4", Boolean.class, "13", "PIN_Q04", IO.OUTPUT);
-		PeripheralIO pc5out = new PeripheralIO("Q5", Boolean.class, "15", "PIN_Q05", IO.OUTPUT);
+		PeripheralIO pc5out = new PeripheralIO("Q5", Boolean.class, "33", "PIN_Q05", IO.OUTPUT);
 		PeripheralIO pc6out = new PeripheralIO("Q6", Boolean.class, "25", "PIN_Q06", IO.OUTPUT);
 		PeripheralIO pc7out = new PeripheralIO("Q7", Boolean.class, "26", "PIN_Q07", IO.OUTPUT);
 		PeripheralIO pc8out = new PeripheralIO("Q8", Boolean.class, "27", "PIN_Q08", IO.OUTPUT);

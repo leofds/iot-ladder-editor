@@ -33,7 +33,6 @@ public class IotLadderEditor{
 	public static void Initialization(){
 		Mediator me = Mediator.getInstance();
 		me.setProject(new ProjectContainer());	// Create a blank project
-		me.setFileOp(new FileUtils());
 	}
 
 	private static void loadLanguage() {

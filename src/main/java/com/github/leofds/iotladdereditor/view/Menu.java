@@ -34,7 +34,11 @@ import javax.swing.border.EmptyBorder;
 
 import com.github.leofds.iotladdereditor.application.Mediator;
 import com.github.leofds.iotladdereditor.application.Preferences;
+import com.github.leofds.iotladdereditor.example.Example;
+import com.github.leofds.iotladdereditor.example.ExampleFactory;
 import com.github.leofds.iotladdereditor.i18n.Strings;
+import com.github.leofds.iotladdereditor.ladder.LadderProgram;
+import com.github.leofds.iotladdereditor.util.FileUtils;
 import com.github.leofds.iotladdereditor.view.event.Subject;
 import com.github.leofds.iotladdereditor.view.event.Subject.SubMsg;
 
@@ -70,12 +74,13 @@ public class Menu extends JMenuBar {
 		JMenuItem helpAbout = new JMenuItem(Strings.about());
 
 		JMenu fileExamples = new JMenu(Strings.examples());
-//		List<JMenuItem> examples = Examples.get();
-//		if (examples != null) {
-//			for (JMenuItem jMenuItem : examples) {
-//				fileExamples.add(jMenuItem);
-//			}
-//		}
+		int cnt = 1;
+		for(Example ex: Example.values()) {
+			JMenuItem item = new JMenuItem(cnt++ + ". " + ex.name);
+			item.addActionListener(getExampleAction(ex));
+			fileExamples.add(item);
+		}
+		
 		fileOpen.addActionListener(getFileOpenAction());
 		fileNew.addActionListener(getFileNewAction());
 		fileSave.addActionListener(getFileSaveAction());
@@ -116,6 +121,8 @@ public class Menu extends JMenuBar {
 		menuFile.add(fileOpen);
 		menuFile.add(fileNew);
 		menuFile.addSeparator();
+		menuFile.add(fileExamples);
+		menuFile.addSeparator();
 		menuFile.add(fileSave);
 		menuFile.add(fileSaveAs);
 		menuFile.addSeparator();
@@ -137,7 +144,7 @@ public class Menu extends JMenuBar {
 			private static final long serialVersionUID = 1L;
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Mediator.getInstance().getFileOp().openLadderProgram();
+				FileUtils.openLadderProgram();
 			}
 		};
 	}
@@ -147,7 +154,7 @@ public class Menu extends JMenuBar {
 			private static final long serialVersionUID = 1L;
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Mediator.getInstance().getFileOp().newLadderProgram();
+				FileUtils.newLadderProgram();
 			}
 		};
 	}
@@ -157,7 +164,7 @@ public class Menu extends JMenuBar {
 			private static final long serialVersionUID = 1L;
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Mediator.getInstance().getFileOp().saveLadderProgram();
+				FileUtils.saveLadderProgram();
 			}
 		};
 	}
@@ -167,7 +174,7 @@ public class Menu extends JMenuBar {
 			private static final long serialVersionUID = 1L;
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Mediator.getInstance().getFileOp().saveAsLadderProgram();
+				FileUtils.saveAsLadderProgram();
 			}
 		};
 	}
@@ -239,6 +246,20 @@ public class Menu extends JMenuBar {
 				Strings.changeLocale(locale);
 				Preferences.put( Preferences.LANG , locale.getLanguage()+"_"+locale.getCountry());
 				JOptionPane.showMessageDialog(null, Strings.langChangeMsg());
+			}
+		};
+	}
+	
+	private AbstractAction getExampleAction(final Example ex) {
+		return new AbstractAction() {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				LadderProgram ladderProgram = ExampleFactory.createExample(ex);
+				if(ladderProgram != null) {
+					FileUtils.openExample(ex, ladderProgram);
+				}
 			}
 		};
 	}

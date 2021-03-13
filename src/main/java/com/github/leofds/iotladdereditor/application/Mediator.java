@@ -26,7 +26,6 @@ import com.github.leofds.iotladdereditor.i18n.Strings;
 import com.github.leofds.iotladdereditor.ladder.LadderProgram;
 import com.github.leofds.iotladdereditor.ladder.rung.Rung;
 import com.github.leofds.iotladdereditor.ladder.symbol.instruction.LadderInstruction;
-import com.github.leofds.iotladdereditor.util.FileUtils;
 import com.github.leofds.iotladdereditor.view.ConsolePanel;
 import com.github.leofds.iotladdereditor.view.DevicePanel;
 import com.github.leofds.iotladdereditor.view.LadderEditorPanel;
@@ -46,7 +45,6 @@ public class Mediator {
 	private UI ui;
 	private ConsolePanel console;
 	private OutputStream consoleStream;
-	private FileUtils fileOp;
 
 	static {
 		me = new Mediator();
@@ -93,14 +91,6 @@ public class Mediator {
 	
 	public OutputStream getConsoleStream(){
 		return consoleStream;
-	}
-	
-	public void setFileOp(FileUtils fileOp) {
-		this.fileOp = fileOp;
-	}
-	
-	public FileUtils getFileOp() {
-		return fileOp;
 	}
 
 	private void setChangedInTitle(){

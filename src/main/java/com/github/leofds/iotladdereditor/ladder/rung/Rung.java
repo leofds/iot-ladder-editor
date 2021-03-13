@@ -291,7 +291,7 @@ public class Rung implements Serializable, Iterable<LadderInstruction>{
 		}
 	}
 
-	private boolean insertOverride(LadderInstruction current,LadderInstruction moved){
+	public boolean insertOverride(LadderInstruction current,LadderInstruction moved){
 		LadderInstruction next = current.getNext();
 		if(moved.getWidth() > 1){
 			if(next instanceof HorizontalLink){
@@ -313,7 +313,7 @@ public class Rung implements Serializable, Iterable<LadderInstruction>{
 		return true;
 	}
 
-	private boolean insertParallel(LadderInstruction current,LadderInstruction moved){
+	public boolean insertParallel(LadderInstruction current,LadderInstruction moved){
 		if(moved.getWidth() == 1 && current.getWidth() == 1){
 			if(current.getDown() != null){
 				moved.setDown(current.getDown());
@@ -591,5 +591,18 @@ public class Rung implements Serializable, Iterable<LadderInstruction>{
 	
 	public void removeEnd() {
 		recursiveRemoveEnd(first);
+	}
+	
+	public LadderInstruction getBaseInstruction(int pos) {
+		int count = 0;
+		LadderInstruction li = leftPowerRail;
+		while(li.getNext() != null) {
+			li = li.getNext();
+			if(count == pos) {
+				return li;
+			}
+			count++;
+		}
+		return null;
 	}
 }

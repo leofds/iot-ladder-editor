@@ -28,6 +28,7 @@ import com.github.leofds.iotladdereditor.compiler.generator.CodeGenerator;
 import com.github.leofds.iotladdereditor.compiler.generator.IRGenerator;
 import com.github.leofds.iotladdereditor.compiler.generator.factory.CodeGeneratorFactory;
 import com.github.leofds.iotladdereditor.i18n.Strings;
+import com.github.leofds.iotladdereditor.util.FileUtils;
 
 public class Compiler{
 
@@ -41,12 +42,12 @@ public class Compiler{
 			project.setIr(ir);
 
 			try {
-				Mediator.getInstance().getFileOp().createFile("out/ladder.ir", ir.getTextQuadruple());
+				FileUtils.createFile("out/ladder.ir", ir.getTextQuadruple());
 				CodeGenerator codeGenerator = CodeGeneratorFactory.create( project.getLadderProgram().getProperties().getCodeOption() );
 				SourceCode sCode = codeGenerator.generate(project);
 
 				for(SourceFile src:sCode.getFiles()){
-					Mediator.getInstance().getFileOp().createFile(String.format("out/%s", src.getFname()),src.getContent());
+					FileUtils.createFile(String.format("out/%s", src.getFname()),src.getContent());
 				}
 
 				Mediator.getInstance().outputConsoleMessage(Strings.successfullyCompleted());

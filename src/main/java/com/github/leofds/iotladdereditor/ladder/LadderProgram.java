@@ -79,12 +79,30 @@ public class LadderProgram implements Serializable{
 		return integerMemory;
 	}
 
+	public DeviceMemory getIntegerMemoryByName(String name) {
+		for(DeviceMemory mem: integerMemory) {
+			if(mem.getName().equals(name)) {
+				return mem;
+			}
+		}
+		return null;
+	}
+	
 	public void setIntegerMemory(List<DeviceMemory> integerMemory) {
 		this.integerMemory = integerMemory;
 	}
 
 	public List<DeviceMemory> getFloatMemory() {
 		return floatMemory;
+	}
+	
+	public DeviceMemory getFloatMemoryByName(String name) {
+		for(DeviceMemory mem: floatMemory) {
+			if(mem.getName().equals(name)) {
+				return mem;
+			}
+		}
+		return null;
 	}
 
 	public void setFloatMemory(List<DeviceMemory> floatMemory) {

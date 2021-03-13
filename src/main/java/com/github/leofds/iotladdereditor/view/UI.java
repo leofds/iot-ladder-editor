@@ -28,6 +28,7 @@ import javax.swing.JFrame;
 
 import com.github.leofds.iotladdereditor.application.Mediator;
 import com.github.leofds.iotladdereditor.i18n.Strings;
+import com.github.leofds.iotladdereditor.util.FileUtils;
 import com.github.leofds.iotladdereditor.view.dnd.GhostGlassPane;
 
 public class UI extends JFrame implements WindowListener{
@@ -71,7 +72,7 @@ public class UI extends JFrame implements WindowListener{
 
 	@Override
 	public void windowClosing(WindowEvent e) {
-		Mediator.getInstance().getFileOp().confirmSave();
+		FileUtils.confirmSave();
 	}
 
 	@Override

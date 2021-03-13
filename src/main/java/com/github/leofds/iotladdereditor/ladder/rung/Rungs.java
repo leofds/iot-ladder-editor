@@ -35,7 +35,7 @@ public class Rungs implements Serializable,Iterable<Rung>{
 	public Rungs() {
 		rungs.add(new Rung(1, 0));		
 	}	
-
+	
 	public void clear(){
 		rungs.clear();
 		rungs.add(new Rung(1, 0));
@@ -51,7 +51,6 @@ public class Rungs implements Serializable,Iterable<Rung>{
 	}
 
 	public boolean addRung(int x,int y){
-		
 		Rung rung = new Rung(0, 0);
 		for(int i=0;i<rungs.size();i++){
 			Rung r = rungs.get(i);
@@ -62,6 +61,13 @@ public class Rungs implements Serializable,Iterable<Rung>{
 			}
 		}
 		return false;
+	}
+	
+	public boolean addRung(){
+		Rung rung = new Rung(0, 0);
+		rungs.add(rungs.size(), rung);
+		refresh();
+		return true;
 	}
 
 	public void refresh(){
@@ -196,4 +202,9 @@ public class Rungs implements Serializable,Iterable<Rung>{
 			}
 		};
 	}
+	
+	public List<Rung> getList(){
+		return rungs;
+	}
+
 }

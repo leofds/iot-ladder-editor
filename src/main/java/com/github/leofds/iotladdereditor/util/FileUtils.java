@@ -33,12 +33,13 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import com.github.leofds.iotladdereditor.application.Mediator;
 import com.github.leofds.iotladdereditor.application.Preferences;
 import com.github.leofds.iotladdereditor.application.ProjectContainer;
+import com.github.leofds.iotladdereditor.example.Example;
 import com.github.leofds.iotladdereditor.i18n.Strings;
 import com.github.leofds.iotladdereditor.ladder.LadderProgram;
 
 public class FileUtils {
 
-	private String getPName(String fileName){
+	private static String getPName(String fileName){
 		String[] s = Paths.get(fileName).getFileName().toString().split("[.]");
 		if(s != null){
 			return s[0];
@@ -46,7 +47,7 @@ public class FileUtils {
 		return null;
 	}
 	
-	public void createFile(String path,String content) throws IOException{
+	public static void createFile(String path,String content) throws IOException{
 		File file = new File(path);
 		file.getParentFile().mkdirs();
 		file.createNewFile();
@@ -57,10 +58,11 @@ public class FileUtils {
 		Mediator.getInstance().outputConsoleMessage("\t"+path);
 	}
 	
-	private void writeProgramFile(String fileName){
+	private static void writeProgramFile(String fileName){
 		Mediator me = Mediator.getInstance();
 		ProjectContainer project = me.getProject();
 		ObjectOutputStream out = null;
+		System.out.println("->>" +fileName);
 		try{
 			Mediator.getInstance().unselectInstruction();
 			out = new ObjectOutputStream(new FileOutputStream(new File(fileName)));
@@ -81,7 +83,7 @@ public class FileUtils {
 		}
 	}
 
-	public LadderProgram read(ObjectInputStream in) throws ClassNotFoundException, IOException{
+	public static LadderProgram read(ObjectInputStream in) throws ClassNotFoundException, IOException{
 		Object obj = in.readObject();
 		if(obj instanceof LadderProgram){
 			return (LadderProgram) obj;
@@ -89,7 +91,7 @@ public class FileUtils {
 		return null;
 	}
 	
-	private void readProgramFile(String fileName){
+	private static void readProgramFile(String fileName){
 		Mediator me = Mediator.getInstance();
 		ProjectContainer project = me.getProject();
 		ObjectInputStream in = null;
@@ -117,7 +119,7 @@ public class FileUtils {
 		}
 	}
 	
-	public void confirmSave() {
+	public static void confirmSave() {
 		Mediator me = Mediator.getInstance();
 		if(me.getProject() != null) {
 			if(me.isChangedProgram()) {
@@ -129,7 +131,21 @@ public class FileUtils {
 		}
 	}
 	
-	public void openLadderProgram(){
+	public static void openExample(Example ex, LadderProgram ladderProgram) {
+		Mediator me = Mediator.getInstance();
+		confirmSave();
+		ProjectContainer project = new ProjectContainer();
+		project.setLadderProgram(ladderProgram);
+		project.setChanged(false);
+		project.setSaved(false);
+		project.setName(getPName(ex.name));
+		me.setProject(project);
+		me.updateProjectAndViews();
+		me.clearConsole();
+		me.setNoCompiled();
+	}
+	
+	public static void openLadderProgram(){
 		Mediator me = Mediator.getInstance();
 		try {
 			confirmSave();
@@ -161,7 +177,7 @@ public class FileUtils {
 		}
 	}
 	
-	public boolean saveLadderProgram(){
+	public static boolean saveLadderProgram(){
 		Mediator me = Mediator.getInstance();
 		ProjectContainer project = me.getProject();
 		if(project.isChanged()){
@@ -174,7 +190,7 @@ public class FileUtils {
 		return true;
 	}
 	
-	private boolean checkOverwriteFile(String absolutPath) {
+	private static boolean checkOverwriteFile(String absolutPath) {
 		File file = new File(absolutPath);
 		if(file.exists()) {
 			int dialogResult = JOptionPane.showConfirmDialog(null, Strings.doYouWantToOverwriteTheFile(), "overwrite", JOptionPane.YES_NO_OPTION);
@@ -185,7 +201,7 @@ public class FileUtils {
 		return true;
 	}
 	
-	public boolean saveAsLadderProgram(){
+	public static boolean saveAsLadderProgram(){
 		Mediator me = Mediator.getInstance();
 		try{
 			FileFilter filtroTexto = new FileNameExtensionFilter( Strings.ladderProgramExtension(), "ld");
@@ -224,7 +240,7 @@ public class FileUtils {
 		return false;
 	}
 	
-	public void newLadderProgram(){
+	public static void newLadderProgram(){
 		confirmSave();
 		Mediator me = Mediator.getInstance();
 		me.setProject(new ProjectContainer());
@@ -233,7 +249,7 @@ public class FileUtils {
 		me.setNoCompiled();
 	}
 	
-	public void newLadderProgram(ProjectContainer projectContainer) {
+	public static void newLadderProgram(ProjectContainer projectContainer) {
 		confirmSave();
 		Mediator me = Mediator.getInstance();
 		me.setProject(projectContainer);;
@@ -242,7 +258,7 @@ public class FileUtils {
 		me.setNoCompiled();
 	}
 	
-	public void closeLadderProject() {
+	public static void closeLadderProject() {
 		confirmSave();
 		Mediator.getInstance().closeProgram();
 	}
