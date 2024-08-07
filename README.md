@@ -9,26 +9,39 @@ The current version generates Arduino code (.ino) for ESP32.
 
 It's a desktop Java application developed with Eclipse IDE + WindowBuilder plug-in.
 ## How to execute
-1. Install Java 8 (JRE) from Oracle if doesn't already installed
-2. To compile the generated code and load it on ESP32 board install the Arduino IDE and setup it, read [README_arduino_ide_setup.md](https://github.com/leofds/iot-ladder-editor/blob/main/README_arduino_ide_setup.md) to do this
-3. Download the latest executable Jar file ([here](https://github.com/leofds/iot-ladder-editor/releases)) and double click to execute it.
+1. Install Java (8+) if it hasn't already been installed.
+2. Install Arduino IDE (2.3+), read the setup guide ([arduino_ide_setup.md](https://github.com/leofds/iot-ladder-editor/blob/main/arduino_ide_setup.md)).
+3. Download the latest released .jar file ([Releases](https://github.com/leofds/iot-ladder-editor/releases)).
+4. Run the downloaded file with doule-click if supported, or run the command:<br>`java -jar iot_ladder_editor-0.0.2.jar`
 
-## How to execute from source code
-1. Install Java 8 (**JDK**) from Oracle
-2. Download the Eclipse IDE, unzip and execute it
-3. Import the project on Eclipse IDE, read the [README_importing_into_eclipse.md](https://github.com/leofds/iot-ladder-editor/blob/main/README_importing_into_eclipse.md) to do this
-4. On the project, click with the right mouse click and select **Run As>Java Application**
+## How to execute from the source code
+1. Install Java OpenJDK 11+ ([jdk.java.net/archive](https://jdk.java.net/archive/)).
+2. Install VS Code ([https://code.visualstudio.com/download](https://code.visualstudio.com/download)).
+3. Install VS Code Extensions: `Extension Pack for Java`, and `Maven For Java`. (Publisher: Microsoft).
+4. Download this repository and extract the .ZIP or clone this repository with `git clone https://github.com/leofds/iot-ladder-editor`.
+5. Open the project directory `iot-ladder-editor` on the VS Code. The project will be automatically builded by Maven, creating the directory `target`.
+6. Open the file `iot-ladder-editor\src\main\java\com\github\leofds\iotladdereditor\IotLadderEditor.java`.
+7. Run the project clicking on `Run/Run Without Debugging (Ctrl+F5)`. Select `Java` if requested.
+
+**debug**
+
+To run in debug mode add breakpoints to the source code and click on `Run/Start Debugging (F5)`
+
+**generating .jar file**
+
+On the `EXPLORER` tab, `JAVA PROJECTS` navegation bar, click on `Export Jar`. 
 
 ## How to use the software
-To understand about the Ladder Language read [README_ladder_language.md](https://github.com/leofds/iot-ladder-editor/blob/main/README_ladder_language.md).
+To understand about the Ladder Language read [ladder_language.md](https://github.com/leofds/iot-ladder-editor/blob/main/ladder_language.md).
 
-1. Use drag and drop to place instructions on the *Rung* and associate input/output variables to instructions
-2. Go to **Project>Build** to generate the output code
-3. The output file **plc.ino** will be created in the folder **"current folder"/out/plc**
-4. Double click to open Arduino IDE
-5. Put the ESP32 board in programming mode
-6. Click on *Update* icon on the Arduino IDE to load the program on the ESP32 board
-7. After success, reset the ESP32 board to run the program
+1. Use drag and drop to place instructions on the *Rung* and associate input/output variables to instructions.
+2. Go to `Project/Build` to generate the output code.
+3. The output file **plc.ino** will be created in the folder `<current_folder>/out/plc`.
+4. Double click to open Arduino IDE.
+5. Put the ESP32 board in programming mode. (It's no longer necessary)
+6. Click on *Update* icon on the Arduino IDE to load the program on the ESP32 board.
+7. After success
+8. Reset the ESP32 board to run the program. (It's no longer necessary)
 
 Click on picture below to see the demo video:
 
