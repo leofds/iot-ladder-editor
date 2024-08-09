@@ -58,9 +58,13 @@ The table below shows recommended/equivalent Ladder Instruction for the input/ou
 
 You can change the pin mapping on the **Project>Properties**, on the tab "Pin Mapping".
 
-### Connecting to the MQTT broker
+### Using Mosquitto MQTT Broker
 
-Before building, go to **Project>Properties**<br/>
+To install and configure the Mosquitto MQTT Broker read [using_mosquitto_mqt_broker.md](https://github.com/leofds/iot-ladder-editor/blob/main/using_mosquitto_mqt_broker.md).
+
+### Connecting to the MQTT Broker
+
+Before building, go to `Project/Properties`<br/>
 Set the Wi-fi connection and on the tab MQTT set your Broker connection.
 
 <p>
