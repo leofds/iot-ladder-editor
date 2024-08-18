@@ -60,7 +60,9 @@ The table below shows recommended/equivalent Ladder Instruction for the input/ou
 
 You can change the pin mapping on the `Project/Properties`, on the tab "Pin Mapping".
 
-![pinout](https://github.com/user-attachments/assets/817c26c0-7035-48e6-8cd0-30228825cf3a)
+<div style="width: 60%; height: 60%">
+![pinout](https://github.com/user-attachments/assets/49d180c9-2cf4-4dc2-b42e-e9dbc7720c3d)
+</div>
 
 ### Using Mosquitto MQTT Broker
 
