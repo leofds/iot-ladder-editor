@@ -5,12 +5,12 @@
 </kbd></p>
 
 This project is a open source code Ladder Editor that generates code for IoT devices. Through the MQTT protocol it is possible to interact with the program variables.
-The current version generates Arduino code (.ino) for ESP32.
+The current version generates Arduino code (.ino) for ESP32 with FreeRTOS.
 
-It's a desktop Java application developed with Eclipse IDE + WindowBuilder plug-in.
+It's a desktop Java application.
 ## How to execute
 1. Install Java (8+) if it hasn't already been installed.
-2. Install Arduino IDE (2.3+), read the setup guide ([arduino_ide_setup.md](https://github.com/leofds/iot-ladder-editor/blob/main/arduino_ide_setup.md)).
+2. Install Arduino IDE (2.3+), read the setup guide ([arduino_ide_setup.md](https://github.com/leofds/iot-ladder-editor/blob/main/docs/arduino_ide_setup.md)).
 3. Download the latest released .jar file ([Releases](https://github.com/leofds/iot-ladder-editor/releases)).
 4. Run the downloaded file with doule-click if supported, or run the command:<br>`java -jar iot_ladder_editor-0.0.2.jar`
 
@@ -32,7 +32,7 @@ To run in debug mode add breakpoints to the source code and click on `Run/Start 
 On the `EXPLORER` tab, `JAVA PROJECTS` navegation bar, click on `Export Jar`. 
 
 ## How to use the software
-To understand about the Ladder Language read [ladder_language.md](https://github.com/leofds/iot-ladder-editor/blob/main/ladder_language.md).
+To understand about the Ladder Language read [ladder_language.md](https://github.com/leofds/iot-ladder-editor/blob/main/docs/ladder_language.md).
 
 1. Use drag and drop to place instructions on the *Rung* and associate input/output variables to instructions.
 2. Go to `Project/Build` to generate the output code.
@@ -56,11 +56,11 @@ The table below shows recommended/equivalent Ladder Instruction for the input/ou
 | Schematic | <p><img src="https://user-images.githubusercontent.com/5174326/110408536-7ac8d880-8064-11eb-9a7b-1365be4c1d9a.png" width="150"><p/> | <p><img src="https://user-images.githubusercontent.com/5174326/110410232-515d7c00-8067-11eb-8741-11eb1f935d87.png" width="120"><p/> | <p><img src="https://user-images.githubusercontent.com/5174326/110408431-47864980-8064-11eb-826a-6c98c532bb4b.png" width="110"><p/> | <p><img src="https://user-images.githubusercontent.com/5174326/110410853-553dce00-8068-11eb-8245-a96a0892e39f.png" width="110"><p/> |
 | Ladder<br/>Instruction | <p><kbd><img src="https://user-images.githubusercontent.com/5174326/110409038-5d483e80-8065-11eb-870a-9a8611d25a34.png" width="60"></kbd><p/> | <p><kbd><img src="https://user-images.githubusercontent.com/5174326/110410526-c6c94c80-8067-11eb-9c3a-7c07ffb61390.png" width="60"></kbd><p/> | <p><kbd><img src="https://user-images.githubusercontent.com/5174326/110409070-6fc27800-8065-11eb-8a63-88cdab18d138.png" width="60"></kbd><p/> | <p><kbd><img src="https://user-images.githubusercontent.com/5174326/110411015-92a25b80-8068-11eb-8227-7c44e9c5bdc5.png" width="60"></kbd><p/> |
 
-You can change the pin mapping on the **Project>Properties**, on the tab "Pin Mapping".
+You can change the pin mapping on the `Project/Properties`, on the tab "Pin Mapping".
 
 ### Using Mosquitto MQTT Broker
 
-To install and configure the Mosquitto MQTT Broker read [using_mosquitto_mqt_broker.md](https://github.com/leofds/iot-ladder-editor/blob/main/using_mosquitto_mqt_broker.md).
+To install and configure the Mosquitto MQTT Broker read [using_mosquitto_mqt_broker.md](https://github.com/leofds/iot-ladder-editor/blob/main/docs/using_mosquitto_mqt_broker.md).
 
 ### Connecting to the MQTT Broker
 
