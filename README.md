@@ -73,6 +73,9 @@ Set the Wi-fi connection and on the tab MQTT set your Broker connection.
 <p>
 <img src="https://user-images.githubusercontent.com/5174326/110250317-74016f00-7f59-11eb-83e4-6a014f20aa4f.png" width="600"/>
 <p/>
+  
+![image](https://github.com/user-attachments/assets/f6a83f0d-cdb3-4828-b3a7-e7d7da6ea79b)
+
 
 #### Sending messages to device
 
