@@ -66,7 +66,7 @@ You can change the pin mapping on the `Project/Properties`, on the tab "Pin Mapp
 **Default pinout**
 
 <p>
-<img src="https://github.com/user-attachments/assets/6813c03a-5b3d-434c-9204-891af246e1b8" height="300"/>
+<img src="https://github.com/user-attachments/assets/374dd429-2c3d-47a9-9dbe-3b2678c3d00c" height="300"/>
 <p/>
 
 ### Connecting to the MQTT Broker
