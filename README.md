@@ -66,14 +66,8 @@ You can change the pin mapping on the `Project/Properties`, on the tab "Pin Mapp
 **Default pinout**
 
 <p>
-<img src="https://github.com/user-attachments/assets/6813c03a-5b3d-434c-9204-891af246e1b8" width="400"/>
+<img src="https://github.com/user-attachments/assets/6813c03a-5b3d-434c-9204-891af246e1b8" height="400"/>
 <p/>
-
-### MQTT Broker
-
-To use the AWS IoT read [AWS_IoT_Setup_and_Configuration.md](https://github.com/leofds/iot-ladder-editor/blob/main/docs/AWS_IoT_Setup_and_Configuration.md)
-
-To use the Mosquitto MQTT Broker read [Mosquitto_Setup_and_Configuration.md](https://github.com/leofds/iot-ladder-editor/blob/main/docs/Mosquitto_Setup_and_Configuration.md).
 
 ### Connecting to the MQTT Broker
 
@@ -120,3 +114,9 @@ On the tab MQTT/Telemetry set the period and variables to send.
 <p>
 <img src="https://user-images.githubusercontent.com/5174326/110261862-9367be80-7f90-11eb-8f19-11463b8da99d.png" width="600"/>
 <p/>
+
+### MQTT Broker
+
+To use the AWS IoT read [AWS_IoT_Setup_and_Configuration.md](https://github.com/leofds/iot-ladder-editor/blob/main/docs/AWS_IoT_Setup_and_Configuration.md)
+
+To use the Mosquitto MQTT Broker read [Mosquitto_Setup_and_Configuration.md](https://github.com/leofds/iot-ladder-editor/blob/main/docs/Mosquitto_Setup_and_Configuration.md).
