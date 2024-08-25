@@ -1,6 +1,6 @@
-# Using Mosquitto MQTT Broker
+# Mosquitto Setup and Configuration
 
-Mosquitto is an open source message broker that implements the MQTT protocol.
+Mosquitto is an open source message broker that implements the MQTT protocol.<br>
 [https://mosquitto.org/](https://mosquitto.org/)
 
 ## 1. Installing Mosquitto on Ubuntu 24 Server
