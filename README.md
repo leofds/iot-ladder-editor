@@ -55,6 +55,8 @@ The table below shows recommended/equivalent Ladder Instruction for the input/ou
 | Schematic | <p><img src="https://user-images.githubusercontent.com/5174326/110408536-7ac8d880-8064-11eb-9a7b-1365be4c1d9a.png" width="150"><p/> | <p><img src="https://user-images.githubusercontent.com/5174326/110410232-515d7c00-8067-11eb-8741-11eb1f935d87.png" width="120"><p/> | <p><img src="https://user-images.githubusercontent.com/5174326/110408431-47864980-8064-11eb-826a-6c98c532bb4b.png" width="110"><p/> | <p><img src="https://user-images.githubusercontent.com/5174326/110410853-553dce00-8068-11eb-8245-a96a0892e39f.png" width="110"><p/> |
 | Ladder<br/>Instruction | <p><kbd><img src="https://user-images.githubusercontent.com/5174326/110409038-5d483e80-8065-11eb-870a-9a8611d25a34.png" width="60"></kbd><p/> | <p><kbd><img src="https://user-images.githubusercontent.com/5174326/110410526-c6c94c80-8067-11eb-9c3a-7c07ffb61390.png" width="60"></kbd><p/> | <p><kbd><img src="https://user-images.githubusercontent.com/5174326/110409070-6fc27800-8065-11eb-8a63-88cdab18d138.png" width="60"></kbd><p/> | <p><kbd><img src="https://user-images.githubusercontent.com/5174326/110411015-92a25b80-8068-11eb-8227-7c44e9c5bdc5.png" width="60"></kbd><p/> |
 
+### Pin Mapping
+
 You can change the pin mapping on the `Project/Properties`, on the tab "Pin Mapping".
 
 ### MQTT Broker
