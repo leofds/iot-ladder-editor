@@ -114,6 +114,15 @@ On the tab MQTT/Telemetry set the period and variables to send.
 <img src="https://user-images.githubusercontent.com/5174326/110261862-9367be80-7f90-11eb-8f19-11463b8da99d.png" width="600"/>
 <p/>
 
+Message sample sent from device:
+```json
+{
+  "MI01": 0,
+  "Q1": 0,
+  "I1": 0
+}
+```
+
 ### MQTT Broker
 
 To use the AWS IoT read [AWS_IoT_Setup_and_Configuration.md](https://github.com/leofds/iot-ladder-editor/blob/main/docs/AWS_IoT_Setup_and_Configuration.md)
