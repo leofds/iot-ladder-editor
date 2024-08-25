@@ -59,6 +59,16 @@ The table below shows recommended/equivalent Ladder Instruction for the input/ou
 
 You can change the pin mapping on the `Project/Properties`, on the tab "Pin Mapping".
 
+<p>
+<img src="https://github.com/user-attachments/assets/e771989b-42d8-4b10-bc08-b523ba19b341" width="600"/>
+<p/>
+
+**Default pinout**
+
+<p>
+<img src="https://github.com/user-attachments/assets/6813c03a-5b3d-434c-9204-891af246e1b8" width="400"/>
+<p/>
+
 ### MQTT Broker
 
 To use the AWS IoT read [AWS_IoT_Setup_and_Configuration.md](https://github.com/leofds/iot-ladder-editor/blob/main/docs/AWS_IoT_Setup_and_Configuration.md)
@@ -73,9 +83,9 @@ Set the Wi-fi connection and on the tab MQTT set your Broker connection.
 <p>
 <img src="https://user-images.githubusercontent.com/5174326/110250317-74016f00-7f59-11eb-83e4-6a014f20aa4f.png" width="600"/>
 <p/>
-  
+
 <p>
-<img src="https://github.com/user-attachments/assets/26be341b-9d8e-41d6-921d-d315cfec2540" width="600"/>
+<img src="https://github.com/user-attachments/assets/46af9bc3-81fb-4819-bcbf-2b053a646fb2" width="600"/>
 <p/>
 
 <p>
