@@ -95,7 +95,7 @@ Only Integer and Floating program variable can be modified by MQTT messages.<br/
 Set the topic to subscribe on the tab MQTT/Topic.
 
 Example of message: sending value 1 to variable MI01:
-```
+```json
 {
   "MI01": 1
 }
@@ -105,16 +105,16 @@ Example of message: sending value 1 to variable MI01:
 <img src="https://user-images.githubusercontent.com/5174326/110261559-75e62500-7f8f-11eb-85de-57cae13cc227.png" width="400"/>
 <p/>
 
-#### Sending messages from device
+#### Sending messages from the device
 
-Set the topic to publish on the tab MQTT/Topic.<br/>
-On the tab MQTT/Telemetry set the period and variables to send.
+Set the topic to publish on the tab `MQTT/Topic`.<br/>
+On the tab, `MQTT/Telemetry` set the period and variables to send.
 
 <p>
 <img src="https://user-images.githubusercontent.com/5174326/110261862-9367be80-7f90-11eb-8f19-11463b8da99d.png" width="600"/>
 <p/>
 
-Message sample sent from device:
+Message sample sent from the device:
 ```json
 {
   "MI01": 0,
