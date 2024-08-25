@@ -6,7 +6,6 @@
 
 This project is an open-source Ladder Editor designed to generate code for IoT devices. It enables interaction with program variables via the MQTT protocol, connecting with AWS IoT or Mosquitto MQTT Broker. The current version supports Arduino code generation (.ino) for ESP32 devices running FreeRTOS.
 
-It's a desktop Java application.
 ## How to execute
 1. Install Java (8+) if it hasn't already been installed.
 2. Install Arduino IDE (2.3+), read the setup guide ([Arduino_IDE_Setup.md](https://github.com/leofds/iot-ladder-editor/blob/main/docs/Arduino_IDE_Setup.md)).
